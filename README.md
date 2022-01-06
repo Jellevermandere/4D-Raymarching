@@ -8,7 +8,7 @@ https://youtu.be/nUExziADzjc
 ### raymarching
 This project uses raymarching, the objects are expanded to the 4th dimension. so each object is defined by 4 parameters: x,y,z,w.
 
-The world then fixes the W axis to a set value nad the resulting shapes can be displayed in 3D space.
+The world then fixes the W axis to a set value and the resulting shapes can be displayed in 3D space.
 
 ### placing objets
 objects can be added with a null and a single script that controls the 4 dimensional PSR and type of boolean operator.
