@@ -32,7 +32,8 @@ public class Shape4D : MonoBehaviour
     // returns the 4D position of the object
     public Vector4 Position()
     {
-        return new Vector4(transform.position.x, transform.position.y, transform.position.z, positionW);
+        Vector3 position3D = transform.position;
+        return new Vector4(position3D.x, position3D.y, position3D.z, positionW);
     }
 
     //returns the 3D rotation of the object
@@ -55,7 +56,8 @@ public class Shape4D : MonoBehaviour
         }
         else parentScale = Vector4.one;
 
-        return Vector4.Scale(new Vector4(transform.localScale.x, transform.localScale.y, transform.localScale.z, scaleW), parentScale);
+        Vector3 localScale3D = transform.localScale;
+        return Vector4.Scale(new Vector4(localScale3D.x, localScale3D.y, localScale3D.z, scaleW), parentScale);
 
     }
 
