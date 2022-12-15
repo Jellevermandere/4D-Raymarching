@@ -201,7 +201,7 @@ public class RaymarchCam : SceneViewFilter
 
     void CreateScene()
     {
-        List<Shape4D> allShapes = new List<Shape4D>(FindObjectsOfType<Shape4D>());
+        List<Shape4D> allShapes = new List<Shape4D>(FindObjectsOfType<Shape4D>());//todo: do not use FindObjectsOfType()
         allShapes.Sort((a, b) => a.operation.CompareTo(b.operation));
 
         orderedShapes = new List<Shape4D>();
@@ -218,9 +218,9 @@ public class RaymarchCam : SceneViewFilter
                 // Add all children of the shape (nested children not supported currently)
                 for (int j = 0; j < parentShape.childCount; j++)
                 {
-                    if (parentShape.GetChild(j).GetComponent<Shape4D>() != null)
+                    if (parentShape.GetChild(j).TryGetComponent(out Shape4D shape4D))
                     {
-                        orderedShapes.Add(parentShape.GetChild(j).GetComponent<Shape4D>());
+                        orderedShapes.Add(shape4D);
                         orderedShapes[orderedShapes.Count - 1].numChildren = 0;
                     }
                 }
