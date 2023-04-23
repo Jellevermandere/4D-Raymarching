@@ -30,6 +30,7 @@ Shader "Raymarch/RaymarchCam"
             uniform float3 _wRotation;
             uniform float w;
             uniform float _maxDistance;
+            uniform float _min_iteration;
             uniform float _precision;
             uniform float _max_iteration;
             uniform float _maxShadowDistance;
@@ -233,7 +234,7 @@ Shader "Raymarch/RaymarchCam"
                 float t = 0; //distance traveled
 
 
-                for (int i = 0; i < _max_iteration; i++)
+                for (int i = _min_iteration; i < _max_iteration; i++)
                 {
                     //sends out ray from the camera
                     float3 p = ro + rd * t;
@@ -254,7 +255,7 @@ Shader "Raymarch/RaymarchCam"
                     float4 d = (distanceField(p));
 
 
-                    if ((d.x) < _precision) //hit
+                    if ((d.x) < _precision * t) //hit
                     {
                         float3 colorDepth;
                         float light;
