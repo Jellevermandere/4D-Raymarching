@@ -5,7 +5,11 @@ using UnityEngine;
 public class PlayerJump : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float jumpForce = 8;
+    public float jumpForce = 20;
+    public float gravity = -9.81f;
+    public float gravityScale = 5;
+    public float velocity = 0;
+    public float dir = 0;
     void Start()
     {
         
@@ -14,9 +18,15 @@ public class PlayerJump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        velocity += gravity * gravityScale * Time.deltaTime;
+        if (velocity <= 0)
         {
-            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            velocity = 0;
         }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            velocity += (float)1.;
+        }
+        transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
     }
 }
