@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
     public float DeathDistance;
+    //public PlayerJump jump;
 
     private Vector3 StartPos;
     private bool endGame = false;
@@ -37,7 +38,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
-            Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+            float y = 0;
+            Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), y, Input.GetAxis("Vertical")).normalized;
             transform.Translate(direction * Time.deltaTime * playerSpeed, Space.World);
             transform.LookAt(direction + transform.position);
         }

@@ -51,6 +51,7 @@ public class RaymarchCam : SceneViewFilter
     public Transform _player;
     public float _precision;
     public float _max_iteration;
+    public float _min_iteration;
     [Header ("Global Transform Settings")]
     public Vector3 _wRotation;
     public float _wPosition;
@@ -160,6 +161,7 @@ public class RaymarchCam : SceneViewFilter
 
         _raymarchMaterial.SetFloat("_precision", _precision);
         _raymarchMaterial.SetFloat("_max_iteration", _max_iteration);
+        _raymarchMaterial.SetFloat("_min_iteration", _min_iteration);
         _raymarchMaterial.SetFloat("_maxShadowDistance", _maxShadowDistance);
         _raymarchMaterial.SetFloat("_lightIntensity", _lightIntensity);
         _raymarchMaterial.SetFloat("_shadowIntensity", _shadowIntensity);
